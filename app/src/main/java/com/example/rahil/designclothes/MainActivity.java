@@ -16,7 +16,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    ImageView tshirt;
+   // ImageView tshirt;
     ImageView olay;
     Intent i;
     int num = 0 ;
@@ -24,16 +24,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        tshirt = findViewById(R.id.tshirt_main);
+     //   tshirt = findViewById(R.id.tshirt_main);
         olay = findViewById(R.id.tshirt_olay);
-
+        olay.setImageAlpha(0);
         olay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext() , "Toast for fun", Toast.LENGTH_SHORT).show();
                 i = new Intent(v.getContext() , camera.class);
+                Log.d("isize", olay.getWidth()+" "+olay.getHeight());
                 startActivityForResult(i , 1);
-
 
             }
         });
@@ -53,11 +53,13 @@ public class MainActivity extends AppCompatActivity {
         String photoPath = Environment.getExternalStorageDirectory()+"/designClothes/pic"+num+".jpg";
 
         Bitmap rotated = BitmapFactory.decodeFile(photoPath);
-
+        //rotated = Bitmap.createScaledBitmap(rotated , olay.getWidth(), olay.getHeight(), true);
         Bitmap bitmap = rotateBitmap(rotated);
         Bitmap b= convertToHeart(bitmap);
-        Bitmap c = Bitmap.createScaledBitmap(b,b.getWidth()/2,b.getHeight()/2,true);
-        olay.setImageBitmap(c);
+        //Bitmap c = Bitmap.createScaledBitmap(b,b.getWidth()/2,b.getHeight()/2,true);
+        Log.d("isize2", b.getWidth()+" "+b.getHeight());
+        olay.setImageAlpha(255);
+        olay.setImageBitmap(b);
 
     }
 
@@ -65,7 +67,8 @@ public class MainActivity extends AppCompatActivity {
         Matrix matrix = new Matrix();
         matrix.postRotate(90);
         Bitmap rotatedPhoto = Bitmap.createBitmap(photo, 0, 0, photo.getWidth(), photo.getHeight(), matrix, true);
-        // Bitmap rotatedPhoto = Bitmap.createScaledBitmap(rotatedPhoto1,photo.getWidth()/2,photo.getHeight()/2,false);
+        rotatedPhoto = Bitmap.createScaledBitmap(rotatedPhoto , olay.getWidth(), olay.getHeight(), true);
+        //Bitmap rotatedPhoto = Bitmap.createScaledBitmap(rotatedPhoto1,photo.getWidth()/2,photo.getHeight()/2,false);
         return rotatedPhoto ;
     }
 
@@ -74,8 +77,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private Path getHeartPath(Bitmap src) {
-        return resizePath(PathParser.createPathFromPathData(getString(R.string.tshirt1)),
+        return resizePath(PathParser.createPathFromPathData(getString(R.string.torso)),
                 src.getWidth(), src.getHeight());
+
     }
 
 
@@ -86,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
         resizedPath.computeBounds(src, true);
 
         Matrix resizeMatrix = new Matrix();
-        resizeMatrix.setRectToRect(src, bounds, Matrix.ScaleToFit.CENTER);
+        resizeMatrix.setRectToRect(src, bounds , Matrix.ScaleToFit.CENTER);
         resizedPath.transform(resizeMatrix);
 
         return resizedPath;
