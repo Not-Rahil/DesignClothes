@@ -16,7 +16,8 @@ import android.widget.ImageView;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
    // ImageView tshirt;
     int strTorso = R.string.torso;
-    ImageView olay;
+    int strleftsleeve = R.string.leftsleeve;
+    ImageView olay , lsleeve , rsleeve;
     Intent i;
     int num = 0 ;
     @Override
@@ -25,9 +26,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
      //   tshirt = findViewById(R.id.tshirt_main);
         olay = findViewById(R.id.torso);
-        olay.setImageAlpha(0);
-        olay.setOnClickListener(this);
+        lsleeve = findViewById(R.id.leftsleeve);
+        rsleeve = findViewById(R.id.rightsleeve);
 
+        olay.setImageAlpha(0);
+        lsleeve.setImageAlpha(0);
+        rsleeve.setImageAlpha(0);
+        olay.setOnClickListener(this);
+        lsleeve.setOnClickListener(this);
 
 
     }
@@ -39,6 +45,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 i = new Intent(v.getContext(), camera.class);
                  startActivityForResult(i, 1);
                 break;
+            case R.id.leftsleeve:
+                i = new Intent(v.getContext(), camera.class);
+                startActivityForResult(i, 2);
+                break;
+
+
         }
     }
 
@@ -46,28 +58,48 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == 1 ){
-            num = data.getIntExtra("image", 0 );
-            ImageOperations(num ,strTorso);
+
+        num = data.getIntExtra("image", 0 );
+        switch(requestCode){
+            case 1:
+                ImageOperations(num ,strTorso , 1);
+                break;
+            case 2:
+                ImageOperations(num ,strleftsleeve, 2);
+                break;
         }
+
     }
 
-    private void ImageOperations(int num, int strTorso) {
+    private void ImageOperations(int num, int strpath , int img) {
         String photoPath = Environment.getExternalStorageDirectory()+"/designClothes/pic"+num+".jpg";
 
         Bitmap rotated = BitmapFactory.decodeFile(photoPath);
         //rotated = Bitmap.createScaledBitmap(rotated , olay.getWidth(), olay.getHeight(), true);
         Bitmap bitmap = rotateBitmap(rotated);
-        Bitmap b= convertToTorso(bitmap , strTorso);
+        Bitmap b= convertToTorso(bitmap , strpath);
         //Bitmap c = Bitmap.createScaledBitmap(b,b.getWidth()/2,b.getHeight()/2,true);Log.d("isize2", b.getWidth()+" "+b.getHeight());
-        olay.setImageAlpha(255);
-        olay.setImageBitmap(b);
+        switch (img){
+            case 1:
+                olay.setImageAlpha(255);
+                olay.setImageBitmap(b);
+                break;
+            case 2:
+                Bitmap c; //right side need to rotate
+                Matrix matrix = new Matrix();
+                matrix.preScale(-1.0f, 1.0f);
+                c = Bitmap.createBitmap(b, 0, 0, b.getWidth(), b.getHeight(), matrix, true);
+                rsleeve.setImageAlpha(255);
+                lsleeve.setImageAlpha(255);
+                lsleeve.setImageBitmap(b);
+                rsleeve.setImageBitmap(c);
+        }
 
     }
 
 
-    private Bitmap convertToTorso(Bitmap src, int strTorso) {
-        Path p = resizePath(PathParser.createPathFromPathData(getString(strTorso)) , src.getWidth() , src.getHeight());
+    private Bitmap convertToTorso(Bitmap src, int strpath) {
+        Path p = resizePath(PathParser.createPathFromPathData(getString(strpath)) , src.getWidth() , src.getHeight());
         return BitmapUtils.getCroppedBitmap(src, p );
     }
 
