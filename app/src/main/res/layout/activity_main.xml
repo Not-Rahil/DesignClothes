@@ -65,5 +65,47 @@
         app:layout_constraintVertical_bias="0.253"
         app:srcCompat="@drawable/ic_sleeveright" />
 
+    <ImageView
+        android:id="@+id/leftcorner"
+        android:layout_width="52dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="364dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.358"
+        app:srcCompat="@drawable/ic_sleevecorner" />
+
+    <ImageView
+        android:id="@+id/rightcorner"
+        android:layout_width="52dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="364dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:scaleX="-1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.357"
+        app:srcCompat="@drawable/ic_sleevecorner" />
+
+    <ImageView
+        android:id="@+id/collar"
+        android:layout_width="142dp"
+        android:layout_height="119dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.187"
+        app:srcCompat="@drawable/ic_collar" />
+
 
 </android.support.constraint.ConstraintLayout>

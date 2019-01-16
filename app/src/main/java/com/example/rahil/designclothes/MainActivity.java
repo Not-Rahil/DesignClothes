@@ -17,7 +17,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
    // ImageView tshirt;
     int strTorso = R.string.torso;
     int strleftsleeve = R.string.leftsleeve;
-    ImageView olay , lsleeve , rsleeve;
+    int strcorner = R.string.cornersleeve;
+    int strcollar = R.string.collar;
+    ImageView olay , lsleeve , rsleeve, leftcorner , rightcorner , collar ;
     Intent i;
     int num = 0 ;
     @Override
@@ -28,27 +30,43 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         olay = findViewById(R.id.torso);
         lsleeve = findViewById(R.id.leftsleeve);
         rsleeve = findViewById(R.id.rightsleeve);
+        leftcorner = findViewById(R.id.leftcorner);
+        rightcorner = findViewById(R.id.rightcorner);
+        collar = findViewById(R.id.collar);
 
         olay.setImageAlpha(0);
         lsleeve.setImageAlpha(0);
         rsleeve.setImageAlpha(0);
+        leftcorner.setImageAlpha(0);
+        rightcorner.setImageAlpha(0);
+        collar.setImageAlpha(0);
         olay.setOnClickListener(this);
         lsleeve.setOnClickListener(this);
 
+        leftcorner.setOnClickListener(this);
+
+        collar.setOnClickListener(this);
 
     }
 
     public void onClick(View v) {
+        i = new Intent(v.getContext(), camera.class);
+
         switch (v.getId()) {
 
             case R.id.torso:
-                i = new Intent(v.getContext(), camera.class);
                  startActivityForResult(i, 1);
                 break;
             case R.id.leftsleeve:
-                i = new Intent(v.getContext(), camera.class);
                 startActivityForResult(i, 2);
                 break;
+            case R.id.leftcorner:
+                startActivityForResult(i, 3);
+                break;
+            case R.id.collar:
+                startActivityForResult(i, 4);
+                break;
+
 
 
         }
@@ -67,6 +85,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case 2:
                 ImageOperations(num ,strleftsleeve, 2);
                 break;
+            case 3:
+                ImageOperations(num ,strcorner, 3);
+                break;
+            case 4:
+                ImageOperations(num ,strcollar, 4);
+                break;
         }
 
     }
@@ -78,6 +102,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //rotated = Bitmap.createScaledBitmap(rotated , olay.getWidth(), olay.getHeight(), true);
         Bitmap bitmap = rotateBitmap(rotated);
         Bitmap b= convertToTorso(bitmap , strpath);
+        Bitmap c;
+        Matrix matrix;
         //Bitmap c = Bitmap.createScaledBitmap(b,b.getWidth()/2,b.getHeight()/2,true);Log.d("isize2", b.getWidth()+" "+b.getHeight());
         switch (img){
             case 1:
@@ -85,14 +111,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 olay.setImageBitmap(b);
                 break;
             case 2:
-                Bitmap c; //right side need to rotate
-                Matrix matrix = new Matrix();
+                matrix = new Matrix();
                 matrix.preScale(-1.0f, 1.0f);
                 c = Bitmap.createBitmap(b, 0, 0, b.getWidth(), b.getHeight(), matrix, true);
                 rsleeve.setImageAlpha(255);
                 lsleeve.setImageAlpha(255);
                 lsleeve.setImageBitmap(b);
                 rsleeve.setImageBitmap(c);
+                break;
+            case 3:
+                matrix = new Matrix();
+                matrix.preScale(-1.0f, 1.0f);
+                c = Bitmap.createBitmap(b, 0, 0, b.getWidth(), b.getHeight(), matrix, true);
+                rightcorner.setImageAlpha(255);
+                leftcorner.setImageAlpha(255);
+                rightcorner.setImageBitmap(b);
+                leftcorner.setImageBitmap(b);
+                break;
+            case 4:
+                collar.setImageAlpha(255);
+                collar.setImageBitmap(b);
+                break;
         }
 
     }
