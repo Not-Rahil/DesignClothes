@@ -10,13 +10,12 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
    // ImageView tshirt;
+    int strTorso = R.string.torso;
     ImageView olay;
     Intent i;
     int num = 0 ;
@@ -25,43 +24,53 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
      //   tshirt = findViewById(R.id.tshirt_main);
-        olay = findViewById(R.id.tshirt_olay);
+        olay = findViewById(R.id.torso);
         olay.setImageAlpha(0);
-        olay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getApplicationContext() , "Toast for fun", Toast.LENGTH_SHORT).show();
-                i = new Intent(v.getContext() , camera.class);
-                Log.d("isize", olay.getWidth()+" "+olay.getHeight());
-                startActivityForResult(i , 1);
+        olay.setOnClickListener(this);
 
-            }
-        });
+
+
     }
+
+    public void onClick(View v) {
+        switch (v.getId()) {
+
+            case R.id.torso:
+                i = new Intent(v.getContext(), camera.class);
+                 startActivityForResult(i, 1);
+                break;
+        }
+    }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == 1 ){
             num = data.getIntExtra("image", 0 );
-            Log.d("Testing", String.valueOf(num));
-            ImageOperations(num);
+            ImageOperations(num ,strTorso);
         }
     }
 
-    private void ImageOperations(int num) {
+    private void ImageOperations(int num, int strTorso) {
         String photoPath = Environment.getExternalStorageDirectory()+"/designClothes/pic"+num+".jpg";
 
         Bitmap rotated = BitmapFactory.decodeFile(photoPath);
         //rotated = Bitmap.createScaledBitmap(rotated , olay.getWidth(), olay.getHeight(), true);
         Bitmap bitmap = rotateBitmap(rotated);
-        Bitmap b= convertToHeart(bitmap);
-        //Bitmap c = Bitmap.createScaledBitmap(b,b.getWidth()/2,b.getHeight()/2,true);
-        Log.d("isize2", b.getWidth()+" "+b.getHeight());
+        Bitmap b= convertToTorso(bitmap , strTorso);
+        //Bitmap c = Bitmap.createScaledBitmap(b,b.getWidth()/2,b.getHeight()/2,true);Log.d("isize2", b.getWidth()+" "+b.getHeight());
         olay.setImageAlpha(255);
         olay.setImageBitmap(b);
 
     }
+
+
+    private Bitmap convertToTorso(Bitmap src, int strTorso) {
+        Path p = resizePath(PathParser.createPathFromPathData(getString(strTorso)) , src.getWidth() , src.getHeight());
+        return BitmapUtils.getCroppedBitmap(src, p );
+    }
+
 
     private Bitmap rotateBitmap(Bitmap photo){
         Matrix matrix = new Matrix();
@@ -71,17 +80,6 @@ public class MainActivity extends AppCompatActivity {
         //Bitmap rotatedPhoto = Bitmap.createScaledBitmap(rotatedPhoto1,photo.getWidth()/2,photo.getHeight()/2,false);
         return rotatedPhoto ;
     }
-
-    private Bitmap convertToHeart(Bitmap src) {
-        return BitmapUtils.getCroppedBitmap(src, getHeartPath(src));
-    }
-
-    private Path getHeartPath(Bitmap src) {
-        return resizePath(PathParser.createPathFromPathData(getString(R.string.torso)),
-                src.getWidth(), src.getHeight());
-
-    }
-
 
     public static Path resizePath(Path path, float width, float height) {
         RectF bounds = new RectF(0, 0, width, height);

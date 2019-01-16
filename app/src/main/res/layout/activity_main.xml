@@ -24,7 +24,7 @@
         app:srcCompat="@drawable/shirtsimple" />
 
     <ImageView
-        android:id="@+id/tshirt_olay"
+        android:id="@+id/torso"
         android:layout_width="267dp"
         android:layout_height="377dp"
         android:src="@drawable/ic_torso"
