@@ -49,7 +49,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.253"
-        app:srcCompat="@drawable/ic_sleeveleft" />
+        app:srcCompat="@drawable/ic_sleeveleft"
+        tools:ignore="VectorDrawableCompat" />
 
     <ImageView
         android:id="@+id/rightsleeve"
@@ -63,7 +64,8 @@
         app:layout_constraintStart_toEndOf="@+id/leftsleeve"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.253"
-        app:srcCompat="@drawable/ic_sleeveright" />
+        app:srcCompat="@drawable/ic_sleeveright"
+        tools:ignore="VectorDrawableCompat" />
 
     <ImageView
         android:id="@+id/leftcorner"
@@ -76,7 +78,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.358"
-        app:srcCompat="@drawable/ic_sleevecorner" />
+        app:srcCompat="@drawable/ic_sleevecorner"
+        tools:ignore="VectorDrawableCompat" />
 
     <ImageView
         android:id="@+id/rightcorner"
@@ -91,7 +94,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.357"
-        app:srcCompat="@drawable/ic_sleevecorner" />
+        app:srcCompat="@drawable/ic_sleevecorner"
+        tools:ignore="VectorDrawableCompat" />
 
     <ImageView
         android:id="@+id/collar"
@@ -105,7 +109,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.187"
-        app:srcCompat="@drawable/ic_collar" />
+        app:srcCompat="@drawable/ic_collar"
+        tools:ignore="VectorDrawableCompat" />
 
 
 </android.support.constraint.ConstraintLayout>

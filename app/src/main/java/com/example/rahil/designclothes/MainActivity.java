@@ -42,8 +42,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         collar.setImageAlpha(0);
         olay.setOnClickListener(this);
         lsleeve.setOnClickListener(this);
-
+        rsleeve.setOnClickListener(this);
         leftcorner.setOnClickListener(this);
+        rightcorner.setOnClickListener(this);
 
         collar.setOnClickListener(this);
 
@@ -57,9 +58,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.torso:
                  startActivityForResult(i, 1);
                 break;
+            case R.id.rightsleeve:
             case R.id.leftsleeve:
                 startActivityForResult(i, 2);
                 break;
+            case R.id.rightcorner:
             case R.id.leftcorner:
                 startActivityForResult(i, 3);
                 break;
