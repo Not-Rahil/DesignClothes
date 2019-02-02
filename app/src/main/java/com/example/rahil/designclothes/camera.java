@@ -248,7 +248,7 @@ public class camera extends AppCompatActivity {
         } catch (CameraAccessException e) {
             e.printStackTrace();
         }
-        //sending image back to MainActivity
+        //sending image back to TShirtActivity
         ReturnIntent.putExtra("image", num);
         setResult( 1 , ReturnIntent);
         finish();

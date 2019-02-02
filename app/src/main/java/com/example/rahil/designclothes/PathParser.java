@@ -345,7 +345,7 @@ public class PathParser {
                         path.lineTo(val[k + 0], currentY);
                         currentX = val[k + 0];
                         break;
-                    case 'v': // vertical lineto - Draws a vertical line from the current point (r)
+                    case 'v': // vertical lineto - Draws a vertical line from the current point (shirt)
                         path.rLineTo(0, val[k + 0]);
                         currentY += val[k + 0];
                         break;

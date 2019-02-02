@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TShirtActivity"
+    tools:layout_editor_absoluteY="25dp">
+
+
+    <ImageView
+        android:id="@+id/tshirt_static"
+        android:layout_width="380dp"
+        android:layout_height="494dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/tshirt" />
+
+    <ImageView
+        android:id="@+id/torso"
+        android:layout_width="263dp"
+        android:layout_height="346dp"
+        android:src="@drawable/ic_torso"
+
+        app:layout_constraintBottom_toBottomOf="@id/tshirt_static"
+        app:layout_constraintEnd_toEndOf="@id/tshirt_static"
+        app:layout_constraintStart_toStartOf="@id/tshirt_static"
+        app:layout_constraintTop_toTopOf="@id/tshirt_static" />
+
+    <ImageView
+        android:id="@+id/leftsleeve"
+        android:layout_width="91dp"
+        android:layout_height="168dp"
+        app:layout_constraintBottom_toBottomOf="@id/tshirt_static"
+        app:layout_constraintEnd_toEndOf="@id/tshirt_static"
+        app:layout_constraintHorizontal_bias="0.020"
+        app:layout_constraintStart_toStartOf="@id/tshirt_static"
+        app:layout_constraintTop_toTopOf="@id/tshirt_static"
+        app:layout_constraintVertical_bias="0.27"
+        app:srcCompat="@drawable/ic_sleeveleft"
+        tools:ignore="VectorDrawableCompat" />
+
+    <ImageView
+        android:id="@+id/rightsleeve"
+        android:layout_width="91dp"
+        android:layout_height="168dp"
+        app:layout_constraintBottom_toBottomOf="@id/tshirt_static"
+        app:layout_constraintEnd_toEndOf="@id/tshirt_static"
+        app:layout_constraintHorizontal_bias="0.969"
+        app:layout_constraintStart_toStartOf="@id/tshirt_static"
+        android:scaleX="-1"
+        app:layout_constraintTop_toTopOf="@id/tshirt_static"
+        app:layout_constraintVertical_bias="0.265"
+        app:srcCompat="@drawable/ic_sleeveleft"
+        tools:ignore="VectorDrawableCompat" />
+
+    <ImageView
+        android:id="@+id/leftcorner"
+        android:layout_width="52dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="330dp"
+
+        app:layout_constraintBottom_toBottomOf="@id/tshirt_static"
+        app:layout_constraintEnd_toEndOf="@id/tshirt_static"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tshirt_static"
+        app:layout_constraintVertical_bias="0.4"
+        app:srcCompat="@drawable/ic_sleevecorner"
+        tools:ignore="VectorDrawableCompat" />
+
+    <ImageView
+        android:id="@+id/rightcorner"
+        android:layout_width="52dp"
+        android:layout_height="80dp"
+        android:scaleX="-1"
+        app:layout_constraintBottom_toBottomOf="@id/tshirt_static"
+        app:layout_constraintEnd_toEndOf="@id/tshirt_static"
+        app:layout_constraintHorizontal_bias="1.01"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tshirt_static"
+        app:layout_constraintVertical_bias="0.39"
+
+
+        app:srcCompat="@drawable/ic_sleevecorner"
+        tools:ignore="VectorDrawableCompat" />
+
+    <ImageView
+        android:id="@+id/collar"
+        android:layout_width="114dp"
+        android:layout_height="103dp"
+        app:layout_constraintBottom_toBottomOf="@id/tshirt_static"
+        app:layout_constraintEnd_toEndOf="@id/tshirt_static"
+
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="@id/tshirt_static"
+        app:layout_constraintTop_toTopOf="@id/tshirt_static"
+        app:layout_constraintVertical_bias="0.178"
+        app:srcCompat="@drawable/ic_collar"
+        tools:ignore="VectorDrawableCompat" />
+
+
+</android.support.constraint.ConstraintLayout>
