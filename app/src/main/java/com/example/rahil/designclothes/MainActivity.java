@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
-    Button Tshirt, Shirt;
+    Button Tshirt, Shirt ,Dress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Tshirt = findViewById(R.id.teeBtn);
         Shirt = findViewById(R.id.shirtBtn);
-
+        Dress = findViewById(R.id.dressbtn);
 
         Tshirt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,5 +33,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Dress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), DressActivity.class);
+                startActivity(i);
+            }
+        });
     }
 }
