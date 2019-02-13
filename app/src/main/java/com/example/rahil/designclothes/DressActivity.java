@@ -15,6 +15,7 @@ import android.widget.ImageView;
 
 public class DressActivity extends AppCompatActivity implements View.OnClickListener {
     ImageView ptt1,ptt2,ptt3,ptt4,ptt5,ptt6,ptt7,ptt8;
+    ImageView ptt11,ptt21,ptt31,ptt41,ptt51,ptt61,ptt71,ptt81;
     Intent i ;
     int num = 0;
     int pttpath1 = R.string.ptt1;
@@ -37,7 +38,15 @@ public class DressActivity extends AppCompatActivity implements View.OnClickList
         ptt6 = findViewById(R.id.ptt6);
         ptt7 = findViewById(R.id.ptt7);
         ptt8 = findViewById(R.id.ptt8);
-/*
+        ptt11 = findViewById(R.id.ptt11);
+        ptt21 = findViewById(R.id.ptt21);
+        ptt31 = findViewById(R.id.ptt31);
+        ptt41 = findViewById(R.id.ptt41);
+        ptt51 = findViewById(R.id.ptt51);
+        ptt61 = findViewById(R.id.ptt61);
+        ptt71 = findViewById(R.id.ptt71);
+        ptt81 = findViewById(R.id.ptt81);
+
         ptt1.setImageAlpha(0);
         ptt2.setImageAlpha(0);
         ptt3.setImageAlpha(0);
@@ -46,7 +55,15 @@ public class DressActivity extends AppCompatActivity implements View.OnClickList
         ptt6.setImageAlpha(0);
         ptt7.setImageAlpha(0);
         ptt8.setImageAlpha(0);
-*/
+        ptt11.setImageAlpha(0);
+        ptt21.setImageAlpha(0);
+        ptt31.setImageAlpha(0);
+        ptt41.setImageAlpha(0);
+        ptt51.setImageAlpha(0);
+        ptt61.setImageAlpha(0);
+        ptt71.setImageAlpha(0);
+        ptt81.setImageAlpha(0);
+
         ptt1.setOnClickListener(this);
         ptt2.setOnClickListener(this);
         ptt3.setOnClickListener(this);
@@ -55,6 +72,14 @@ public class DressActivity extends AppCompatActivity implements View.OnClickList
         ptt6.setOnClickListener(this);
         ptt7.setOnClickListener(this);
         ptt8.setOnClickListener(this);
+        ptt11.setOnClickListener(this);
+        ptt21.setOnClickListener(this);
+        ptt31.setOnClickListener(this);
+        ptt41.setOnClickListener(this);
+        ptt51.setOnClickListener(this);
+        ptt61.setOnClickListener(this);
+        ptt71.setOnClickListener(this);
+        ptt81.setOnClickListener(this);
 
     }
 
@@ -65,27 +90,35 @@ public class DressActivity extends AppCompatActivity implements View.OnClickList
         switch (v.getId()) {
 
             case R.id.ptt1:
+            case R.id.ptt11:
                 startActivityForResult(i, 1);
                 break;
             case R.id.ptt2:
+            case R.id.ptt21:
                 startActivityForResult(i, 2);
                 break;
             case R.id.ptt3:
+            case R.id.ptt31:
                 startActivityForResult(i, 3);
                 break;
             case R.id.ptt4:
+            case R.id.ptt41:
                 startActivityForResult(i, 4);
                 break;
             case R.id.ptt5:
+            case R.id.ptt51:
                 startActivityForResult(i, 5);
                 break;
             case R.id.ptt6:
+            case R.id.ptt61:
                 startActivityForResult(i, 6);
                 break;
             case R.id.ptt7:
+            case R.id.ptt71:
                 startActivityForResult(i, 7);
                 break;
             case R.id.ptt8:
+            case R.id.ptt81:
                 startActivityForResult(i, 8);
                 break;
             /*case R.id.rightsleeve:
@@ -159,34 +192,50 @@ public class DressActivity extends AppCompatActivity implements View.OnClickList
             case 1:
                 ptt1.setImageAlpha(255);
                 ptt1.setImageBitmap(b);
+                ptt11.setImageAlpha(255);
+                ptt11.setImageBitmap(b);
                 break;
             case 2:
                 ptt2.setImageAlpha(255);
                 ptt2.setImageBitmap(b);
+                ptt21.setImageAlpha(255);
+                ptt21.setImageBitmap(b);
                 break;
             case 3:
                 ptt3.setImageAlpha(255);
                 ptt3.setImageBitmap(b);
+                ptt31.setImageAlpha(255);
+                ptt31.setImageBitmap(b);
                 break;
             case 4:
                 ptt4.setImageAlpha(255);
                 ptt4.setImageBitmap(b);
+                ptt41.setImageAlpha(255);
+                ptt41.setImageBitmap(b);
                 break;
             case 5:
                 ptt5.setImageAlpha(255);
                 ptt5.setImageBitmap(b);
+                ptt51.setImageAlpha(255);
+                ptt51.setImageBitmap(b);
                 break;
             case 6:
                 ptt6.setImageAlpha(255);
                 ptt6.setImageBitmap(b);
+                ptt61.setImageAlpha(255);
+                ptt61.setImageBitmap(b);
                 break;
             case 7:
                 ptt7.setImageAlpha(255);
                 ptt7.setImageBitmap(b);
+                ptt71.setImageAlpha(255);
+                ptt71.setImageBitmap(b);
                 break;
             case 8:
                 ptt8.setImageAlpha(255);
                 ptt8.setImageBitmap(b);
+                ptt81.setImageAlpha(255);
+                ptt81.setImageBitmap(b);
                 break;
             /*case 2:
                 leftPart.setImageAlpha(255);

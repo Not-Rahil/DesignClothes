@@ -126,6 +126,132 @@
 
 
     <ImageView
+        android:id="@+id/ptt11"
+        android:layout_width="66dp"
+        android:layout_height="106dp"
+        android:layout_marginEnd="8dp"
+        android:scaleX="-1"
+        android:src="@drawable/ic_ptt1"
+        app:layout_constraintBottom_toBottomOf="@+id/staticDress"
+        app:layout_constraintEnd_toEndOf="@+id/staticDress"
+        app:layout_constraintHorizontal_bias="0.899"
+        app:layout_constraintStart_toStartOf="@+id/staticDress"
+        app:layout_constraintTop_toTopOf="@+id/staticDress"
+        app:layout_constraintVertical_bias="0.155" />
+
+    <ImageView
+        android:id="@+id/ptt31"
+        android:layout_width="71dp"
+        android:layout_height="326dp"
+        android:layout_marginEnd="8dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:scaleX="-1"
+        android:src="@drawable/ic_ptt3"
+        app:layout_constraintBottom_toBottomOf="@+id/staticDress"
+        app:layout_constraintEnd_toEndOf="@+id/staticDress"
+        app:layout_constraintHorizontal_bias="0.777"
+        app:layout_constraintStart_toStartOf="@+id/staticDress"
+        app:layout_constraintTop_toTopOf="@+id/staticDress"
+        app:layout_constraintVertical_bias="0.285" />
+
+    <ImageView
+        android:id="@+id/ptt21"
+        android:layout_width="41dp"
+        android:layout_height="64dp"
+        android:layout_marginEnd="8dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:scaleX="-1"
+        android:src="@drawable/ic_ptt2"
+        app:layout_constraintBottom_toBottomOf="@+id/staticDress"
+        app:layout_constraintEnd_toEndOf="@+id/staticDress"
+        app:layout_constraintHorizontal_bias="0.758"
+        app:layout_constraintStart_toStartOf="@+id/staticDress"
+        app:layout_constraintTop_toTopOf="@+id/staticDress"
+        app:layout_constraintVertical_bias="0.135" />
+
+
+    <ImageView
+        android:id="@+id/ptt41"
+        android:layout_width="52dp"
+        android:layout_height="313dp"
+        android:layout_marginEnd="8dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:scaleX="-1"
+        android:src="@drawable/ic_ptt4"
+        app:layout_constraintBottom_toBottomOf="@+id/staticDress"
+        app:layout_constraintEnd_toEndOf="@+id/staticDress"
+        app:layout_constraintHorizontal_bias="0.675"
+        app:layout_constraintStart_toStartOf="@+id/staticDress"
+        app:layout_constraintTop_toTopOf="@+id/staticDress"
+        app:layout_constraintVertical_bias="0.38" />
+
+
+    <ImageView
+        android:id="@+id/ptt61"
+        android:layout_width="67dp"
+        android:layout_height="276dp"
+        android:layout_marginEnd="8dp"
+        android:scaleType="centerCrop"
+        android:scaleX="-1"
+        android:src="@drawable/ic_ptt6"
+        app:layout_constraintBottom_toBottomOf="@+id/staticDress"
+        app:layout_constraintEnd_toEndOf="@+id/staticDress"
+        app:layout_constraintHorizontal_bias="0.56"
+        app:layout_constraintStart_toStartOf="@+id/staticDress"
+        app:layout_constraintTop_toTopOf="@+id/staticDress"
+        app:layout_constraintVertical_bias="0.524" />
+
+    <ImageView
+        android:id="@+id/ptt51"
+        android:layout_width="55dp"
+        android:layout_height="285dp"
+        android:layout_marginEnd="8dp"
+        android:scaleType="centerCrop"
+        android:scaleX="-1"
+        android:src="@drawable/ic_ptt5"
+        app:layout_constraintBottom_toBottomOf="@+id/staticDress"
+        app:layout_constraintEnd_toEndOf="@+id/staticDress"
+        app:layout_constraintHorizontal_bias="0.607"
+        app:layout_constraintStart_toStartOf="@+id/staticDress"
+        app:layout_constraintTop_toTopOf="@+id/staticDress"
+        app:layout_constraintVertical_bias="0.49" />
+
+
+    <ImageView
+        android:id="@+id/ptt71"
+        android:layout_width="67dp"
+        android:layout_height="69dp"
+        android:layout_marginEnd="8dp"
+        android:scaleX="-1"
+        android:src="@drawable/ic_ptt7top"
+        app:layout_constraintBottom_toBottomOf="@+id/staticDress"
+        app:layout_constraintEnd_toEndOf="@+id/staticDress"
+        app:layout_constraintHorizontal_bias="0.593"
+        app:layout_constraintStart_toStartOf="@+id/staticDress"
+        app:layout_constraintTop_toTopOf="@+id/staticDress"
+        app:layout_constraintVertical_bias="0.02" />
+
+    <ImageView
+        android:id="@+id/ptt81"
+        android:layout_width="129dp"
+        android:layout_height="74dp"
+        android:layout_marginEnd="8dp"
+        android:scaleType="centerCrop"
+        android:scaleX="-1"
+        android:src="@drawable/ic_ptt8bottom"
+        app:layout_constraintBottom_toBottomOf="@+id/staticDress"
+        app:layout_constraintEnd_toEndOf="@+id/staticDress"
+        app:layout_constraintHorizontal_bias="0.728"
+        app:layout_constraintStart_toStartOf="@+id/staticDress"
+        app:layout_constraintTop_toTopOf="@+id/staticDress"
+        app:layout_constraintVertical_bias="1.0" />
+
+
+
+    <ImageView
         android:id="@+id/staticDress"
         android:layout_width="402dp"
         android:layout_height="417dp"
