@@ -3,15 +3,23 @@ package com.example.rahil.designclothes;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Path;
 import android.graphics.RectF;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.Nullable;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+
+import java.io.File;
+import java.io.FileOutputStream;
 
 public class ShirtActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -22,6 +30,11 @@ public class ShirtActivity extends AppCompatActivity implements View.OnClickList
     int leftpath = R.string.Shirtleftpath;
     int collarshirtpath = R.string.collarshirt;
     int shirtbackpath = R.string.shirtback;
+
+    ConstraintLayout mylayout;
+    Button saveBtn;
+    int imgnum = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +44,11 @@ public class ShirtActivity extends AppCompatActivity implements View.OnClickList
         collarshirtleft = findViewById(R.id.collarshirtleft);
         collarshirtright = findViewById(R.id.collarshirtright);
         shirtback = findViewById(R.id.shirtback);
+
+        saveBtn = findViewById(R.id.saveBtn);
+        mylayout = findViewById(R.id.mylayout);
+        saveBtn.setOnClickListener(this);
+
 
         rightPart.setImageAlpha(0);
         leftPart.setImageAlpha(0);
@@ -64,20 +82,45 @@ public class ShirtActivity extends AppCompatActivity implements View.OnClickList
             case R.id.shirtback:
                 startActivityForResult(i, 4);
                 break;
-            /*case R.id.rightsleeve:
-            case R.id.leftsleeve:
-                startActivityForResult(i, 2);
-                break;
-            case R.id.rightcorner:
-            case R.id.leftcorner:
-                startActivityForResult(i, 3);
-                break;
-            case R.id.collar:
-                startActivityForResult(i, 4);
-                break;
-                */
+            case R.id.saveBtn:
+                saveImage(mylayout);
+
         }
     }
+
+    private void saveImage(ConstraintLayout v) {
+        //creating bitmap from view
+        Bitmap b = Bitmap.createBitmap(v.getWidth() , v.getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas c = new Canvas(b);
+        c.drawColor(Color.WHITE);
+        // v.layout(0, 0, v.getLayoutParams().width, v.getLayoutParams().height);
+        v.draw(c);
+
+        //saving to storage
+        File mediaStorageDir = new File(Environment.getExternalStorageDirectory(), "designclothes");
+        if (!mediaStorageDir.exists()) {
+            if (!mediaStorageDir.mkdirs()) {
+                Log.d("App", "failed to create directory");
+            }
+        }
+        File tempfile = new File(Environment.getExternalStorageDirectory()+"/designClothes/shirt"+imgnum+".jpg");
+        while(tempfile.exists()){
+            imgnum++;
+            tempfile = new File(Environment.getExternalStorageDirectory()+"/designClothes/shirt"+imgnum+".jpg");
+        }
+        final File file = new File(Environment.getExternalStorageDirectory()+"/designClothes/shirt"+imgnum+".jpg");
+
+        try {
+            FileOutputStream out = new FileOutputStream(file);
+            b.compress(Bitmap.CompressFormat.JPEG, 90, out);
+            out.flush();
+            out.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
 
     @Override

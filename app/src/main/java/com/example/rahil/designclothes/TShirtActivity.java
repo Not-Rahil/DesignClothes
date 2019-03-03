@@ -3,25 +3,36 @@ package com.example.rahil.designclothes;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Path;
 import android.graphics.RectF;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.Nullable;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+
+import java.io.File;
+import java.io.FileOutputStream;
 
 public class TShirtActivity extends AppCompatActivity implements View.OnClickListener {
     // ImageView tshirt;
     int strTorso = R.string.torso;
     int strleftsleeve = R.string.leftsleeve;
     int strcorner = R.string.cornersleeve;
+    ConstraintLayout mylayout;
     int strcollar = R.string.collar;
-    ImageView olay, lsleeve, rsleeve, leftcorner, rightcorner, collar;
+    ImageView olay, lsleeve, rsleeve, leftcorner, rightcorner, collar , tshirtstatic;
     Intent i;
+    Button saveBtn;
+    int imgnum = 0;
     int num = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +45,12 @@ public class TShirtActivity extends AppCompatActivity implements View.OnClickLis
         leftcorner = findViewById(R.id.leftcorner);
         rightcorner = findViewById(R.id.rightcorner);
         collar = findViewById(R.id.collar);
+        tshirtstatic = findViewById(R.id.tshirt_static);
+
+
+        saveBtn = findViewById(R.id.saveBtn);
+        mylayout = findViewById(R.id.mylayout);
+        saveBtn.setOnClickListener(this);
 
         olay.setImageAlpha(0);
         lsleeve.setImageAlpha(0);
@@ -48,6 +65,8 @@ public class TShirtActivity extends AppCompatActivity implements View.OnClickLis
         rightcorner.setOnClickListener(this);
 
         collar.setOnClickListener(this);
+
+
 
     }
 
@@ -70,8 +89,41 @@ public class TShirtActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.collar:
                 startActivityForResult(i, 4);
                 break;
+            case R.id.saveBtn:
+                saveImage(mylayout);
 
+        }
+    }
 
+    private void saveImage(ConstraintLayout v) {
+        //creating bitmap from view
+        Bitmap b = Bitmap.createBitmap(v.getWidth() , v.getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas c = new Canvas(b);
+       // v.layout(0, 0, v.getLayoutParams().width, v.getLayoutParams().height);
+        v.draw(c);
+
+        //saving to storage
+        File mediaStorageDir = new File(Environment.getExternalStorageDirectory(), "designclothes");
+        if (!mediaStorageDir.exists()) {
+            if (!mediaStorageDir.mkdirs()) {
+                Log.d("App", "failed to create directory");
+            }
+        }
+        File tempfile = new File(Environment.getExternalStorageDirectory()+"/designClothes/tshirt"+imgnum+".jpg");
+        while(tempfile.exists()){
+            imgnum++;
+            tempfile = new File(Environment.getExternalStorageDirectory()+"/designClothes/tshirt"+imgnum+".jpg");
+        }
+        final File file = new File(Environment.getExternalStorageDirectory()+"/designClothes/tshirt"+imgnum+".jpg");
+
+        try {
+            FileOutputStream out = new FileOutputStream(file);
+            b.compress(Bitmap.CompressFormat.JPEG, 90, out);
+            out.flush();
+            out.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

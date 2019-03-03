@@ -17,11 +17,13 @@ import android.hardware.camera2.TotalCaptureResult;
 import android.hardware.camera2.params.StreamConfigurationMap;
 import android.media.Image;
 import android.media.ImageReader;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -150,6 +152,7 @@ public class camera extends AppCompatActivity {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     protected void takePicture(){
         if(null == cameraDevice) {
             Log.e(TAG, "cameraDevice is null");
@@ -254,6 +257,7 @@ public class camera extends AppCompatActivity {
         finish();
 
     }
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     protected void createCameraPreview(){
         try{
             SurfaceTexture texture = textureView.getSurfaceTexture();
@@ -281,6 +285,7 @@ public class camera extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void openCamera() {
         CameraManager manager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
         Log.e(TAG, "is camera open");

@@ -7,6 +7,10 @@
     tools:context=".TShirtActivity"
     tools:layout_editor_absoluteY="25dp">
 
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/mylayout">
 
     <ImageView
         android:id="@+id/tshirt_static"
@@ -19,16 +23,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/tshirt" />
 
-    <ImageView
-        android:id="@+id/torso"
-        android:layout_width="263dp"
-        android:layout_height="346dp"
-        android:src="@drawable/ic_torso"
+        <ImageView
+            android:id="@+id/torso"
+            android:layout_width="263dp"
+            android:layout_height="346dp"
+            android:src="@drawable/ic_torso"
 
-        app:layout_constraintBottom_toBottomOf="@id/tshirt_static"
-        app:layout_constraintEnd_toEndOf="@id/tshirt_static"
-        app:layout_constraintStart_toStartOf="@id/tshirt_static"
-        app:layout_constraintTop_toTopOf="@id/tshirt_static" />
+            app:layout_constraintBottom_toBottomOf="@id/tshirt_static"
+            app:layout_constraintEnd_toEndOf="@id/tshirt_static"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="@id/tshirt_static"
+            app:layout_constraintTop_toTopOf="@id/tshirt_static"
+            app:layout_constraintVertical_bias="0.472" />
 
     <ImageView
         android:id="@+id/leftsleeve"
@@ -47,11 +53,11 @@
         android:id="@+id/rightsleeve"
         android:layout_width="91dp"
         android:layout_height="168dp"
+        android:scaleX="-1"
         app:layout_constraintBottom_toBottomOf="@id/tshirt_static"
         app:layout_constraintEnd_toEndOf="@id/tshirt_static"
         app:layout_constraintHorizontal_bias="0.969"
         app:layout_constraintStart_toStartOf="@id/tshirt_static"
-        android:scaleX="-1"
         app:layout_constraintTop_toTopOf="@id/tshirt_static"
         app:layout_constraintVertical_bias="0.265"
         app:srcCompat="@drawable/ic_sleeveleft"
@@ -102,6 +108,21 @@
         app:layout_constraintVertical_bias="0.178"
         app:srcCompat="@drawable/ic_collar"
         tools:ignore="VectorDrawableCompat" />
+
+    </android.support.constraint.ConstraintLayout>
+    <Button
+        android:id="@+id/saveBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.937" />
 
 
 </android.support.constraint.ConstraintLayout>
